@@ -5,11 +5,11 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.*;
 
-import org.cdoremus.mvc_hibernate_demo.ChirpUser;
 import org.junit.Test;
 import org.springframework.test.web.servlet.MockMvc;
 
 import org.cdoremus.mvc_hibernate_demo.data.ChirpUserRepository;
+import org.cdoremus.mvc_hibernate_demo.domain.ChirpUser;
 
 public class ChirpUserControllerTest {
 

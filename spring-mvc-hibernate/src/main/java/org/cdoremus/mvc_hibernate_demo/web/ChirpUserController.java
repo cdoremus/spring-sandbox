@@ -4,7 +4,6 @@ import static org.springframework.web.bind.annotation.RequestMethod.*;
 
 import javax.validation.Valid;
 
-import org.cdoremus.mvc_hibernate_demo.ChirpUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.cdoremus.mvc_hibernate_demo.data.ChirpUserRepository;
+import org.cdoremus.mvc_hibernate_demo.domain.ChirpUser;
 
 @Controller
 @RequestMapping("/chirpUser")
@@ -39,9 +39,10 @@ public class ChirpUserController {
       return "registerForm";
     }
     
+//    System.out.println("User being registered: " + user);
     userRepository.save(user);
     ChirpUser newuser = userRepository.findByUsername(user.getUsername());
-    System.out.println("User registered: " + newuser);
+//    System.out.println("User registered: " + newuser);
     
     return "redirect:/chirpUser/" + user.getUsername();
   }

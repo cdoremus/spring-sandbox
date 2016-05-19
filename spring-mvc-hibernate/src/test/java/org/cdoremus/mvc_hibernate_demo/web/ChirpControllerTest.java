@@ -9,12 +9,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.cdoremus.mvc_hibernate_demo.Chirp;
 import org.junit.Test;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.servlet.view.InternalResourceView;
 
 import org.cdoremus.mvc_hibernate_demo.data.ChirpRepository;
+import org.cdoremus.mvc_hibernate_demo.domain.Chirp;
 
 public class ChirpControllerTest {
 

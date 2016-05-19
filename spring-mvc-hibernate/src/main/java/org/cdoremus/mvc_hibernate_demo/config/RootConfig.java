@@ -12,7 +12,7 @@ import org.springframework.core.type.filter.RegexPatternTypeFilter;
 import org.cdoremus.mvc_hibernate_demo.config.RootConfig.WebPackage;
 
 @Configuration
-@Import(JdbcDataConfig.class)
+@Import(HibernateDataConfig.class)
 @ComponentScan(basePackages={"org.cdoremus.mvc_hibernate_demo"}, 
     excludeFilters={
         @Filter(type=FilterType.CUSTOM, value=WebPackage.class)

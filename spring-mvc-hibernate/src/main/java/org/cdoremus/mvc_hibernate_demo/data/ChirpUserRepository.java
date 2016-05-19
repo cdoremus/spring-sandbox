@@ -1,6 +1,6 @@
 package org.cdoremus.mvc_hibernate_demo.data;
 
-import org.cdoremus.mvc_hibernate_demo.ChirpUser;
+import org.cdoremus.mvc_hibernate_demo.domain.ChirpUser;
 
 public interface ChirpUserRepository {
 

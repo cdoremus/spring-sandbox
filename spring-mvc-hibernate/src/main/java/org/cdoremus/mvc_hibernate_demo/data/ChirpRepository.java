@@ -2,7 +2,7 @@ package org.cdoremus.mvc_hibernate_demo.data;
 
 import java.util.List;
 
-import org.cdoremus.mvc_hibernate_demo.Chirp;
+import org.cdoremus.mvc_hibernate_demo.domain.Chirp;
 
 public interface ChirpRepository {
 

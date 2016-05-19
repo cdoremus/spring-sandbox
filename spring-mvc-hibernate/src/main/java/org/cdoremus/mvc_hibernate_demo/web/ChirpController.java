@@ -3,7 +3,6 @@ package org.cdoremus.mvc_hibernate_demo.web;
 import java.util.Date;
 import java.util.List;
 
-import org.cdoremus.mvc_hibernate_demo.Chirp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import org.cdoremus.mvc_hibernate_demo.data.ChirpRepository;
+import org.cdoremus.mvc_hibernate_demo.domain.Chirp;
 
 @Controller
 @RequestMapping("/chirps")
@@ -43,12 +43,12 @@ public class ChirpController {
 
   @RequestMapping(method=RequestMethod.POST)
   public String saveChirp(ChirpForm form, Model model) throws Exception {
-	System.out.println("Chirps before save: " + chirpCount());
+//	System.out.println("Chirps before save: " + chirpCount());
 	
     chirpRepository.save(new Chirp(null, form.getMessage(), new Date(), 
         form.getLongitude(), form.getLatitude()));
     
-	System.out.println("Chirps after save: " + chirpCount());
+//	System.out.println("Chirps after save: " + chirpCount());
     
     return "redirect:/chirps";
   }

@@ -20,8 +20,9 @@ dependencies {
 		   "org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}"
 
 	compile "org.springframework:spring-webmvc:$springVersion"
-	compile "org.springframework:spring-jdbc:$springVersion"
+	compile "org.springframework:spring-orm:$springVersion"
 	compile "com.h2database:h2:$h2Version"
+	compile "org.hibernate:hibernate-entitymanager:$hibernateEntityManagerVersion"
 	compile "org.hibernate:hibernate-validator:$hibernateValidatorVersion"
 	compile "org.apache.commons:commons-lang3:$commonsLangVersion"
 
