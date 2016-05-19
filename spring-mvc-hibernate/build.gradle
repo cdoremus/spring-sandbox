@@ -25,7 +25,8 @@ dependencies {
 	compile "org.hibernate:hibernate-entitymanager:$hibernateEntityManagerVersion"
 	compile "org.hibernate:hibernate-validator:$hibernateValidatorVersion"
 	compile "org.apache.commons:commons-lang3:$commonsLangVersion"
-
+	compile 'javax.inject:javax.inject:1'
+	
     compile "javax.servlet:jstl:$jstlVersion"
     providedCompile "javax.servlet:javax.servlet-api:$servletApiVersion"
     providedCompile "javax.servlet.jsp:jsp-api:$jspApiVersion"
