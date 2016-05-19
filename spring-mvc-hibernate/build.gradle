@@ -1,0 +1,63 @@
+apply plugin: 'eclipse'
+apply plugin: 'war'
+apply plugin: 'eclipse-wtp'
+apply plugin: 'com.bmuschko.tomcat'
+
+buildscript {
+	repositories {
+		jcenter()
+	}
+
+	dependencies {
+		classpath 'com.bmuschko:gradle-tomcat-plugin:2.2.4'
+	}
+}
+
+dependencies {
+	def tomcatVersion = '7.0.59'
+	tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
+		   "org.apache.tomcat.embed:tomcat-embed-logging-juli:${tomcatVersion}",
+		   "org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}"
+
+	compile "org.springframework:spring-webmvc:$springVersion"
+	compile "org.springframework:spring-jdbc:$springVersion"
+	compile "com.h2database:h2:$h2Version"
+	compile "org.hibernate:hibernate-validator:$hibernateValidatorVersion"
+	compile "org.apache.commons:commons-lang3:$commonsLangVersion"
+
+    compile "javax.servlet:jstl:$jstlVersion"
+    providedCompile "javax.servlet:javax.servlet-api:$servletApiVersion"
+    providedCompile "javax.servlet.jsp:jsp-api:$jspApiVersion"
+    providedCompile "javax.el:javax.el-api:$jspElVersion"
+
+    testCompile "junit:junit-dep:$junitVersion"
+    testCompile "org.springframework:spring-test:$springVersion"
+    testCompile "org.mockito:mockito-core:$mockitoVersion"
+    testCompile "org.hamcrest:hamcrest-library:$hamcrestVersion"
+}
+
+repositories {
+	maven { url 'http://maven.springframework.org/release' }
+	maven { url 'http://maven.springframework.org/milestone' }
+	maven { url 'http://maven.springframework.org/snapshot' }
+	maven { url 'http://download.java.net/maven/2' }
+	mavenCentral()
+}
+
+def context_name = 'mvc-hibernate-demo'
+
+war {
+        baseName = context_name
+}
+
+eclipse {
+        wtp {
+                component {
+                        contextPath =  context_name
+                }
+        }
+}
+
+task wrapper(type: Wrapper) {
+	gradleVersion = '1.8'
+}
