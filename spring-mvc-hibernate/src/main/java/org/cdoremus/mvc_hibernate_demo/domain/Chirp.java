@@ -21,7 +21,7 @@ public class Chirp {
   @Column(nullable=false)
   private final String message;
   
-  @Column
+  @Column(name="created_at")
   @Temporal(TemporalType.TIMESTAMP)
   private final Date time;
   

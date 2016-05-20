@@ -20,8 +20,11 @@ public class HibernateChirpRepository implements ChirpRepository {
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<Chirp> findRecentChirps() {
+//		Query query = entityManager.createNativeQuery(
+//		        "select  id, message, created_at, latitude, longitude from Chirp order by created_at desc limit 20");
 		Query query = entityManager.createQuery(
-		        "select c from Chirp c order by c.created_at desc limit 20");
+		        "select c from Chirp c order by c.time desc");
+		query.setMaxResults(20);
 		return (List<Chirp>)query.getResultList();
 	}
 
@@ -29,10 +32,12 @@ public class HibernateChirpRepository implements ChirpRepository {
 	@SuppressWarnings("unchecked")
 	public List<Chirp> findChirps(long max, int count) {
 		Query query = entityManager.createQuery(
-			"select c from Chirp c");
-//					+ " where c.id < ?1" +
-//			        " order by created_at desc limit 20");
-//		query.setParameter(1, max);
+			"select c from Chirp c" //);
+					+ " where c.id < ?1" +
+			        " order by c.time desc");
+		query.setParameter(1, max);
+		query.setMaxResults(20);
+//		query.setFirstResult(1);
 		return (List<Chirp>)query.getResultList();
 	}
 
