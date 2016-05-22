@@ -8,6 +8,7 @@
           href="<c:url value="/resources/style.css" />" >
   </head>
   <body>
+<%@ include file="header.jsp" %>    
     <h1>Register</h1>
 
     <sf:form method="POST" commandName="chirpUser" >
@@ -29,5 +30,8 @@
         <sf:password path="password" cssErrorClass="error" /><br/>
       <input type="submit" value="Register" />
     </sf:form>
+    
+<%@ include file="footer.jsp" %>    
+    
   </body>
 </html>

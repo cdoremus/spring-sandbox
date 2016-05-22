@@ -9,6 +9,8 @@
           href="<c:url value="/resources/style.css" />" >
   </head>
   <body>
+<%@ include file="header.jsp" %>    
+  
     <h1><s:message code="spitter.welcome" text="Welcome to Chirper" /></h1>
 
     <s:url value="/chirpUser/register" var="registerUrl" />

@@ -38,7 +38,7 @@ public class ChirpController {
   public String chirp(
       @PathVariable("chirpId") long chirpId, Model model) {
     model.addAttribute(chirpRepository.findOne(chirpId));
-    return "spittle";
+    return "chirp";
   }
 
   @RequestMapping(method=RequestMethod.POST)

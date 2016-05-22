@@ -6,9 +6,11 @@
     <link rel="stylesheet" type="text/css" href="<c:url value="/resources/style.css" />" >
   </head>
   <body>
+<%@ include file="header.jsp" %>    
     <h1>Your Profile</h1>
     <c:out value="${chirpUser.username}" /><br/>
     <c:out value="${chirpUser.firstName}" /> <c:out value="${chirpUser.lastName}" /><br/>
     <c:out value="${chirpUser.email}" />
+<%@ include file="footer.jsp" %>    
   </body>
 </html>

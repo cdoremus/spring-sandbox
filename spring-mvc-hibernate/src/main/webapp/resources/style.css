@@ -21,15 +21,23 @@ body {
 } 
 
 .spittleTime {
-	font-size: 8pt;
+	font-size: 8px;
 }
 
 .spittleLocation {
-	font-size: 8pt;
+	font-size: 8px;
 }
 
 .spittleForm h1 {
-	font-size: 16pt;
+	font-size: 16px;
+}
+
+.spittleMessage {
+	font-size: 20px;
+}
+
+.spittleTime {
+	font-size: 12px;
 }
 
 label.error {
