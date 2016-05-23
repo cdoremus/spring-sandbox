@@ -15,6 +15,7 @@ import org.springframework.web.servlet.view.InternalResourceView;
 
 import org.cdoremus.mvc_hibernate_demo.data.ChirpRepository;
 import org.cdoremus.mvc_hibernate_demo.domain.Chirp;
+import org.cdoremus.mvc_hibernate_demo.domain.ChirpUser;
 
 public class ChirpControllerTest {
 
@@ -30,13 +31,30 @@ public class ChirpControllerTest {
         .setSingleView(new InternalResourceView("/WEB-INF/views/chirps.jsp"))
         .build();
 
-    mockMvc.perform(get("/chirps"))
+    mockMvc.perform(get("/chirps").sessionAttr("chirpUser", new ChirpUser()))
        .andExpect(view().name("chirps"))
        .andExpect(model().attributeExists("chirpList"))
        .andExpect(model().attribute("chirpList", 
                   hasItems(expectedChrips.toArray())));
   }
 
+  @Test
+  public void shouldRedirectToRegisterIfNoChirpUserAttr() throws Exception {
+    List<Chirp> expectedChrips = createChirpList(20);
+    ChirpRepository mockRepository = mock(ChirpRepository.class);
+    when(mockRepository.findChirps(Long.MAX_VALUE, 20))
+        .thenReturn(expectedChrips);
+
+    ChirpController controller = new ChirpController(mockRepository);
+    MockMvc mockMvc = standaloneSetup(controller)
+        .setSingleView(new InternalResourceView("/WEB-INF/views/chirps.jsp"))
+        .build();
+
+    mockMvc.perform(get("/chirps"))
+       .andExpect(view().name("redirect:/chirpUser/register"));
+  }
+  
+  
   @Test
   public void shouldShowPagedChirps() throws Exception {
     List<Chirp> expectedChrips = createChirpList(50);
@@ -49,7 +67,7 @@ public class ChirpControllerTest {
         .setSingleView(new InternalResourceView("/WEB-INF/views/chirps.jsp"))
         .build();
 
-    mockMvc.perform(get("/chirps?max=238900&count=50"))
+    mockMvc.perform(get("/chirps?max=238900&count=50").sessionAttr("chirpUser", new ChirpUser()))
       .andExpect(view().name("chirps"))
       .andExpect(model().attributeExists("chirpList"))
       .andExpect(model().attribute("chirpList", 
