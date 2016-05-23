@@ -19,30 +19,30 @@ import org.cdoremus.mvc_hibernate_demo.domain.Chirp;
 public class ChirpControllerTest {
 
   @Test
-  public void shouldShowRecentSpittles() throws Exception {
-    List<Chirp> expectedSpittles = createSpittleList(20);
+  public void shouldShowRecentChirps() throws Exception {
+    List<Chirp> expectedChrips = createChirpList(20);
     ChirpRepository mockRepository = mock(ChirpRepository.class);
     when(mockRepository.findChirps(Long.MAX_VALUE, 20))
-        .thenReturn(expectedSpittles);
+        .thenReturn(expectedChrips);
 
     ChirpController controller = new ChirpController(mockRepository);
     MockMvc mockMvc = standaloneSetup(controller)
-        .setSingleView(new InternalResourceView("/WEB-INF/views/spittles.jsp"))
+        .setSingleView(new InternalResourceView("/WEB-INF/views/chirps.jsp"))
         .build();
 
     mockMvc.perform(get("/chirps"))
        .andExpect(view().name("chirps"))
        .andExpect(model().attributeExists("chirpList"))
        .andExpect(model().attribute("chirpList", 
-                  hasItems(expectedSpittles.toArray())));
+                  hasItems(expectedChrips.toArray())));
   }
 
   @Test
-  public void shouldShowPagedSpittles() throws Exception {
-    List<Chirp> expectedSpittles = createSpittleList(50);
+  public void shouldShowPagedChirps() throws Exception {
+    List<Chirp> expectedChrips = createChirpList(50);
     ChirpRepository mockRepository = mock(ChirpRepository.class);
     when(mockRepository.findChirps(238900, 50))
-        .thenReturn(expectedSpittles);
+        .thenReturn(expectedChrips);
     
     ChirpController controller = new ChirpController(mockRepository);
     MockMvc mockMvc = standaloneSetup(controller)
@@ -53,26 +53,26 @@ public class ChirpControllerTest {
       .andExpect(view().name("chirps"))
       .andExpect(model().attributeExists("chirpList"))
       .andExpect(model().attribute("chirpList", 
-                 hasItems(expectedSpittles.toArray())));
+                 hasItems(expectedChrips.toArray())));
   }
   
   @Test
-  public void testSpittle() throws Exception {
-    Chirp expectedSpittle = new Chirp("Hello", new Date());
+  public void testChirp() throws Exception {
+    Chirp expectedChirp = new Chirp("Hello", new Date());
     ChirpRepository mockRepository = mock(ChirpRepository.class);
-    when(mockRepository.findOne(12345)).thenReturn(expectedSpittle);
+    when(mockRepository.findOne(12345)).thenReturn(expectedChirp);
     
     ChirpController controller = new ChirpController(mockRepository);
     MockMvc mockMvc = standaloneSetup(controller).build();
 
     mockMvc.perform(get("/chirps/12345"))
-      .andExpect(view().name("spittle"))
+      .andExpect(view().name("chirp"))
       .andExpect(model().attributeExists("chirp"))
-      .andExpect(model().attribute("chirp", expectedSpittle));
+      .andExpect(model().attribute("chirp", expectedChirp));
   }
 
   @Test
-  public void saveSpittle() throws Exception {
+  public void saveChirp() throws Exception {
     ChirpRepository mockRepository = mock(ChirpRepository.class);
     ChirpController controller = new ChirpController(mockRepository);
     MockMvc mockMvc = standaloneSetup(controller).build();
@@ -87,7 +87,7 @@ public class ChirpControllerTest {
     verify(mockRepository, atLeastOnce()).save(new Chirp(null, "Hello World", new Date(), -81.5811668, 28.4159649));
   }
   
-  private List<Chirp> createSpittleList(int count) {
+  private List<Chirp> createChirpList(int count) {
     List<Chirp> spittles = new ArrayList<Chirp>();
     for (int i=0; i < count; i++) {
       spittles.add(new Chirp("Chirp " + i, new Date()));
