@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="sf" %>
 <%@ page session="false" %>
 <html>
@@ -8,7 +9,10 @@
           href="<c:url value="/resources/style.css" />" >
   </head>
   <body>
-<%@ include file="header.jsp" %>    
+<%@ include file="header.jsp" %>
+	<c:if test="${ userNotRegistered != null }">
+		<div class="errors"><s:message code="chirpUser.notRegistered" text="Register" /></div>		
+	</c:if>    
     <h1>Register</h1>
 
     <sf:form method="POST" commandName="chirpUser" >

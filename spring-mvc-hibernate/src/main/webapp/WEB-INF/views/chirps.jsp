@@ -10,6 +10,7 @@
   <body>
 <%@ include file="header.jsp" %>    
     <div class="spittleForm">
+      <h1>User: ${ chirpUser.firstName } ${ chirpUser.lastName }</h1>	
       <h1>Chirp something...</h1>
       <form method="POST" name="spittleForm">
         <input type="hidden" name="latitude">
