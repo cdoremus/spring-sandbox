@@ -3,6 +3,7 @@ apply plugin: 'war'
 apply plugin: 'eclipse-wtp'
 apply plugin: 'com.bmuschko.tomcat'
 apply plugin: 'checkstyle'
+//apply plugin: "jacoco"
 
 buildscript {
 	repositories {
@@ -22,6 +23,8 @@ dependencies {
 
 	compile "org.springframework:spring-webmvc:$springVersion"
 	compile "org.springframework:spring-orm:$springVersion"
+//	compile 'org.springframework.security:spring-security-web:3.2.5.RELEASE'
+//	compile 'org.springframework.security:spring-security-config:3.2.5.RELEASE'
 	compile "com.h2database:h2:$h2Version"
 	compile "org.hibernate:hibernate-entitymanager:$hibernateEntityManagerVersion"
 	compile "org.hibernate:hibernate-validator:$hibernateValidatorVersion"
@@ -70,5 +73,5 @@ task stage {
 }
 
 task wrapper(type: Wrapper) {
-	gradleVersion = '1.8'
+	gradleVersion = '2.13'
 }
