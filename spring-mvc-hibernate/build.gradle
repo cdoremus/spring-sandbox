@@ -2,6 +2,7 @@ apply plugin: 'eclipse'
 apply plugin: 'war'
 apply plugin: 'eclipse-wtp'
 apply plugin: 'com.bmuschko.tomcat'
+apply plugin: 'checkstyle'
 
 buildscript {
 	repositories {
@@ -59,6 +60,10 @@ eclipse {
                 }
         }
 }
+
+checkstyle {
+	configFile = new File(rootDir, "checkstyle.xml")
+ }
 
 task stage {
 	dependsOn build
