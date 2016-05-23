@@ -11,7 +11,7 @@
   <body>
 <%@ include file="header.jsp" %>    
   
-    <h1><s:message code="spitter.welcome" text="Welcome to Chirper" /></h1>
+    <h1><s:message code="chirper.welcome" text="Welcome" /></h1>
 
     <s:url value="/chirpUser/register" var="registerUrl" />
 
