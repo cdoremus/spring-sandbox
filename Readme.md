@@ -1,6 +1,6 @@
 ## Spring Sandbox ##
 
-Spring MVC JPA/Hibernate BRanch
+Branch holding a small Spring MVC JPA/Hibernate app
 
 This project shows an example of using Spring Framework MVC with JPA/Hibernate.
 
