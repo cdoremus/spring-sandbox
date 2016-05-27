@@ -1,5 +1,9 @@
 ## Spring Sandbox ##
 
-This repo contains Spring Framework examples and learnings
+Spring MVC JPA/Hibernate BRanch
 
-The repo contains a number of separate projects, so each project is held in a separate  separate branch..
+This project shows an example of using Spring Framework MVC with JPA/Hibernate.
+
+The app, called Chirper, is a primative Twitter clone.
+
+[Chirper deployed on Heroku ](https://secret-beyond-32091.herokuapp.com/) 
