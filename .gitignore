@@ -1,0 +1,10 @@
+/spring*/*
+/.idea/*
+/gradle/**
+gradle*
+.springBeans
+.settings
+.project
+.classpath
+.gradle
+
